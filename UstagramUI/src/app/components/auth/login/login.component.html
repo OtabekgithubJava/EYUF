@@ -1,0 +1,40 @@
+<div class="auth-container uzbek-theme">
+  <div class="card">
+    <img src="login.png" alt="Ustagram logo" class="logo">
+    <h2>Kirish</h2>
+    <div *ngIf="errorMessage" class="error-message" role="alert" aria-live="assertive">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="isLoading" class="loading-spinner">
+      <mat-spinner diameter="24"></mat-spinner>
+      Yuklanmoqda...
+    </div>
+    <form *ngIf="!isLoading" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Foydalanuvchi nomi</mat-label>
+        <input matInput formControlName="username" placeholder="Misol: eshmat123" aria-describedby="username-error">
+        <mat-error id="username-error" *ngIf="loginForm.get('username')?.hasError('required')">
+          Foydalanuvchi nomi kerak
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Parol</mat-label>
+        <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Parolingizni kiriting" aria-describedby="password-error">
+        <button mat-icon-button matSuffix (click)="showPassword = !showPassword" type="button" aria-label="Parolni koʻrsatish/yashirish">
+          <mat-icon>{{showPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error id="password-error" *ngIf="loginForm.get('password')?.hasError('required')">
+          Parol kerak
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid || isLoading">
+        Kirish
+      </button>
+    </form>
+    <div class="divider">
+      <span>YOKI</span>
+    </div>
+    <button mat-stroked-button routerLink="/signup">Yangi hisob yaratish</button>
+    <a href="/forgot-password" class="forgot-password">Parolni unutdingizmi?</a>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="post-card" [ngClass]="size" *ngIf="post" [routerLink]="['/post', post.id]" (click)="logNavigation(post.id)">
+  <div class="post-image" [style.background-image]="'url(' + photoPath + ')'">
+    <div class="post-badge" *ngIf="isRecommended">
+      <span>Recommended</span>
+    </div>
+    <div class="post-read-time" *ngIf="showReadTime">
+      <span>{{ readMinutes }} min read</span>
+    </div>
+  </div>
+  <div class="post-content">
+    <div class="post-meta" *ngIf="showCompany">
+      <span class="post-company">{{ company }}</span>
+      <span class="post-date">{{ date | date }}</span>
+    </div>
+    <h3 class="post-title">{{ title }}</h3>
+    <div class="post-tags">
+      <span class="post-tag" *ngFor="let tag of hashtags">{{ tag }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="post-card-empty" *ngIf="!post">
+  <div class="empty-image"></div>
+  <div class="empty-content">
+    <div class="empty-title"></div>
+    <div class="empty-meta"></div>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<div class="feed-container">
+  <header class="feed-header" *ngIf="!isMobileView">
+    <div class="header-content">
+      <h1 class="logo" routerLink="/feed">Ustagram</h1>
+      <nav class="nav-icons">
+        <a routerLink="/feed" class="nav-icon" title="Feed"><i class="fas fa-home"></i></a>
+        <a routerLink="/explore" class="nav-icon" title="Explore"><i class="fas fa-search"></i></a>
+        <a routerLink="/contribute" class="nav-icon" title="Create"><i class="fas fa-plus-square"></i></a>
+        <a routerLink="/messages" class="nav-icon" title="Messages"><i class="fas fa-comment-dots"></i></a>
+        <a routerLink="/profile" class="nav-icon" title="Profile"><i class="fas fa-user-circle"></i></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="feed-main">
+    <div class="user-profile-view" *ngIf="showUserProfile && viewedUser">
+      <div class="profile-header">
+        <button class="back-button" (click)="backToFeed()">←</button>
+        <h2>{{ viewedUser.username }}</h2>
+      </div>
+      <div class="profile-info">
+        <div class="profile-pic-container">
+          <img [src]="viewedUser.photoPath || 'assets/default-profile.jpg'" class="profile-pic">
+        </div>
+        <div class="profile-stats">
+          <div class="stat"><strong>{{ posts.length }}</strong><span>Posts</span></div>
+          <div class="stat"><strong>0</strong><span>Followers</span></div>
+          <div class="stat"><strong>0</strong><span>Following</span></div>
+        </div>
+      </div>
+      <div class="profile-bio">
+        <h3>{{ viewedUser.fullName }}</h3>
+        <p>{{ viewedUser.bio || 'No bio yet' }}</p>
+        <p class="location" *ngIf="viewedUser.location">📍 {{ viewedUser.location }}</p>
+      </div>
+      <div class="user-posts-grid">
+        <div *ngFor="let post of posts" class="post-thumbnail" (click)="openPostModal(post)">
+          <img [src]="post.photoUrl || 'assets/default-post.jpg'" alt="Post">
+        </div>
+      </div>
+    </div>
+
+    <div class="feed-view" *ngIf="!showUserProfile">
+      <div class="stories-container">
+        <div class="stories">
+          <div *ngFor="let user of [1,2,3,4,5,6,7,8,9,10]" class="story">
+            <div class="story-avatar">
+              <img [src]="'https://picsum.photos/200/200?random=' + user" alt="User">
+            </div>
+            <span class="story-username">user{{user}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="posts-feed">
+        <div *ngFor="let post of posts" class="post-card">
+          <div class="post-header">
+            <div class="post-user" (click)="navigateToUserProfile(post.user?.username || '')">
+              <img [src]="post.user?.photoPath || 'assets/default-profile.jpg'" class="post-avatar">
+              <span class="post-username">{{ post.user?.username || 'unknown' }}</span>
+            </div>
+            <button class="post-more">⋮</button>
+          </div>
+
+          <div class="post-image" (click)="openPostModal(post)">
+            <img [src]="post.photoUrl || 'assets/default-post.jpg'" alt="Post">
+          </div>
+
+          <div class="post-actions">
+            <button (click)="toggleLike(post)" [class.liked]="post.isLiked" title="Like">
+              <i [class]="post.isLiked ? 'fas fa-heart' : 'far fa-heart'"></i>
+            </button>
+            <button (click)="openPostModal(post)" title="Comment">
+              <i class="far fa-comment"></i>
+            </button>
+            <button (click)="toggleFavourite(post)" [class.favourited]="post.isFavourited" title="Save">
+              <i [class]="post.isFavourited ? 'fas fa-bookmark' : 'far fa-bookmark'"></i>
+            </button>
+          </div>
+
+          <div class="post-likes">
+            <strong>{{ post.likes || 0 }} likes</strong>
+          </div>
+
+          <div class="post-caption">
+            <strong (click)="navigateToUserProfile(post.user?.username || '')">{{ post.user?.username || 'unknown' }}</strong> {{ post.description }}
+          </div>
+
+          <div class="post-comments-preview" *ngIf="post.comments?.length">
+            <div *ngIf="post.comments.length > 2" class="view-all-comments" (click)="openPostModal(post)">
+              View all {{ post.comments.length }} comments
+            </div>
+            <div class="comment" *ngFor="let comment of post.comments.slice(0, 2)">
+              <strong (click)="navigateToUserProfile(comment.user?.username || '')">{{ comment.user?.username || 'unknown' }}</strong> {{ comment.content }}
+            </div>
+          </div>
+
+          <div class="post-date">
+            {{ post.date | date:'MMM d, yyyy' }}
+          </div>
+        </div>
+
+        <div *ngIf="isLoading" class="loading-indicator">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="mobile-nav" *ngIf="isMobileView">
+    <a routerLink="/feed" class="nav-icon" title="Feed"><i class="fas fa-home"></i></a>
+    <a routerLink="/explore" class="nav-icon" title="Explore"><i class="fas fa-search"></i></a>
+    <a routerLink="/contribute" class="nav-icon" title="Create"><i class="fas fa-plus-square"></i></a>
+    <a routerLink="/messages" class="nav-icon" title="Messages"><i class="fas fa-comment-dots"></i></a>
+    <a routerLink="/profile" class="nav-icon" title="Profile"><i class="fas fa-user-circle"></i></a>
+  </nav>
+
+  <app-post-modal
+    *ngIf="selectedPost"
+    [post]="selectedPost"
+    [user]="currentUser"
+    (close)="closeModal()">
+  </app-post-modal>
+</div>

@@ -1,0 +1,95 @@
+<div class="post-detail-wrapper">
+  <!-- Hero Section -->
+  <div *ngIf="post && !isLoading" class="hero-section"
+       [style.background-image]="'url(' + (post.photoPath || 'assets/default-post-image.jpg') + ')'">
+    <div class="hero-overlay">
+      <button class="back-button" (click)="navigateToHome()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+        Back
+      </button>
+      <div class="hero-content">
+        <h1 class="hero-title">{{ post.title }}</h1>
+        <div class="hero-meta">
+          <span class="company" (click)="navigateToCompany(post.company)">{{ post.company }}</span>
+          <span class="post-date">{{ post.date | date:'mediumDate' }}</span>
+          <span class="read-time">{{ post.read_Minutes }} min read</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-state">
+    <mat-spinner diameter="60"></mat-spinner>
+    <p>Loading post...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error && !isLoading" class="error-state">
+    <h2>Something went wrong</h2>
+    <p>{{ error }}</p>
+    <button class="home-button" (click)="navigateToHome()">Return to Home</button>
+  </div>
+
+  <!-- Main Content -->
+  <div *ngIf="post && !isLoading" class="content-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar sticky">
+      <div class="post-tags" *ngIf="post.hashtags?.length">
+        <h3>Tags</h3>
+        <span *ngFor="let tag of post.hashtags" class="tag">#{{ tag }}</span>
+      </div>
+    </aside>
+
+    <!-- Post Content -->
+    <main class="post-content">
+      <div class="post-body" [innerHTML]="post.content"></div>
+    </main>
+  </div>
+
+  <!-- Related Content -->
+  <div *ngIf="post && !isLoading" class="related-content">
+    <!-- Related Posts -->
+    <section *ngIf="relatedPosts.length" class="related-posts">
+      <h2>More from {{ post.company }}</h2>
+      <div class="posts-grid">
+        <app-post-card
+          *ngFor="let relatedPost of relatedPosts"
+          [post]="relatedPost"
+          size="medium"
+          [routerLink]="['/post', relatedPost.id]">
+        </app-post-card>
+      </div>
+    </section>
+
+    <!-- Recommended Posts -->
+    <section *ngIf="recommendedPosts.length" class="recommended-posts">
+      <h2>Recommended for You</h2>
+      <div class="posts-grid">
+        <app-post-card
+          *ngFor="let recommendedPost of recommendedPosts"
+          [post]="recommendedPost"
+          size="medium"
+          [routerLink]="['/post', recommendedPost.id]">
+        </app-post-card>
+      </div>
+      <button *ngIf="!loadingMore" class="load-more" (click)="loadMoreRecommendedPosts()">Load More</button>
+    </section>
+
+    <!-- News Posts -->
+    <section *ngIf="newsPosts.length" class="news-posts">
+      <h2>Latest News</h2>
+      <div class="posts-grid">
+        <app-post-card
+          *ngFor="let newsPost of newsPosts"
+          [post]="newsPost"
+          size="medium"
+          [routerLink]="['/post', newsPost.id]">
+        </app-post-card>
+      </div>
+      <button *ngIf="!loadingMore" class="load-more" (click)="loadMoreNewsPosts()">Load More</button>
+    </section>
+  </div>
+</div>

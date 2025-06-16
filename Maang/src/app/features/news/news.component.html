@@ -1,0 +1,16 @@
+<div class="news-container">
+  <h1 class="page-title">MAANG News</h1>
+  <p class="page-subtitle">Latest news and updates from Meta, Apple, Amazon, Netflix, and Google</p>
+
+  <div class="news-grid" *ngIf="!isLoading && newsPosts.length > 0">
+    <app-post-card *ngFor="let post of newsPosts" [post]="post"></app-post-card>
+  </div>
+
+  <div class="no-posts" *ngIf="!isLoading && newsPosts.length === 0">
+    <p>No news posts available at the moment.</p>
+  </div>
+
+  <div class="loading-spinner" *ngIf="isLoading">
+    <div class="spinner"></div>
+  </div>
+</div>

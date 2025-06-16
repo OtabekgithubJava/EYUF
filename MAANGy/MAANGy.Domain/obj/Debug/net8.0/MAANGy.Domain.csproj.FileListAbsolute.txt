@@ -1,0 +1,13 @@
+/Users/otabek_coding/Desktop/EYUF/MAANGy/MAANGy.Domain/bin/Debug/net8.0/MAANGy.Domain.deps.json
+/Users/otabek_coding/Desktop/EYUF/MAANGy/MAANGy.Domain/bin/Debug/net8.0/MAANGy.Domain.dll
+/Users/otabek_coding/Desktop/EYUF/MAANGy/MAANGy.Domain/bin/Debug/net8.0/MAANGy.Domain.pdb
+/Users/otabek_coding/Desktop/EYUF/MAANGy/MAANGy.Domain/obj/Debug/net8.0/MAANGy.Domain.csproj.AssemblyReference.cache
+/Users/otabek_coding/Desktop/EYUF/MAANGy/MAANGy.Domain/obj/Debug/net8.0/MAANGy.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/otabek_coding/Desktop/EYUF/MAANGy/MAANGy.Domain/obj/Debug/net8.0/MAANGy.Domain.AssemblyInfoInputs.cache
+/Users/otabek_coding/Desktop/EYUF/MAANGy/MAANGy.Domain/obj/Debug/net8.0/MAANGy.Domain.AssemblyInfo.cs
+/Users/otabek_coding/Desktop/EYUF/MAANGy/MAANGy.Domain/obj/Debug/net8.0/MAANGy.Domain.csproj.CoreCompileInputs.cache
+/Users/otabek_coding/Desktop/EYUF/MAANGy/MAANGy.Domain/obj/Debug/net8.0/MAANGy.Domain.dll
+/Users/otabek_coding/Desktop/EYUF/MAANGy/MAANGy.Domain/obj/Debug/net8.0/refint/MAANGy.Domain.dll
+/Users/otabek_coding/Desktop/EYUF/MAANGy/MAANGy.Domain/obj/Debug/net8.0/MAANGy.Domain.pdb
+/Users/otabek_coding/Desktop/EYUF/MAANGy/MAANGy.Domain/obj/Debug/net8.0/ref/MAANGy.Domain.dll
+/Users/otabek_coding/Desktop/EYUF/MAANGy/MAANGy.Domain/obj/Debug/net8.0/MAANGy.Domain.sourcelink.json

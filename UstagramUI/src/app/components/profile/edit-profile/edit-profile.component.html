@@ -1,0 +1,143 @@
+<button class="back-button" routerLink="/home">
+    <i class="fas fa-arrow-left"></i>
+</button>
+
+<div class="edit-profile-container">
+  <div class="notification" *ngIf="notification" @slideInOut [class]="notification.type">
+    <p>{{ notification.message }}</p>
+  </div>
+  <div class="card">
+    <h2>Edit Profile</h2>
+
+    <form #editForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <label for="fullName">Full Name</label>
+        <input 
+          type="text" 
+          id="fullName"
+          name="fullName" 
+          [(ngModel)]="userData.fullName" 
+          required>
+      </div>
+
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input 
+          type="text" 
+          id="username"
+          name="username" 
+          [(ngModel)]="userData.username" 
+          required>
+      </div>
+
+      <div class="input-group">
+        <label for="password">New Password (optional)</label>
+        <input 
+          type="password" 
+          id="password"
+          name="password" 
+          [(ngModel)]="userData.password">
+      </div>
+
+      <div class="input-group">
+        <label for="phone">Phone</label>
+        <input 
+          type="tel" 
+          id="phone"
+          name="phone" 
+          [(ngModel)]="userData.phone" 
+          required>
+      </div>
+
+      <div class="input-group">
+        <label for="location">Location</label>
+        <select id="location" name="location" [(ngModel)]="userData.location" required>
+          <option value="" disabled selected>Select your region</option>
+          <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="photoUpload">Profile Photo</label>
+        <div class="photo-preview" (click)="triggerFileInput()">
+          <img [src]="userData.photoPath || 'assets/default-profile.png'" alt="Profile photo">
+          <input type="file" id="photoUpload" (change)="handlePhotoUpload($event)" accept="image/*" hidden>
+          <div class="upload-hint">Change Photo</div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="dob">Date of Birth</label>
+        <input 
+          type="date" 
+          id="dob"
+          name="dob" 
+          [(ngModel)]="userData.dob" 
+          required>
+      </div>
+
+      <div class="input-group">
+        <label for="bio">Bio</label>
+        <textarea 
+          id="bio"
+          name="bio" 
+          [(ngModel)]="userData.bio" 
+          rows="3"></textarea>
+      </div>
+
+      <div class="input-group">
+        <label>Status</label>
+        <div class="role-selection">
+          <div class="role-option" 
+               [class.selected]="userData.status === 'FARMER'"
+               (click)="userData.status = 'FARMER'">
+            <h3>Farmer</h3>
+          </div>
+          <div class="role-option" 
+               [class.selected]="userData.status === 'EXPERT'"
+               (click)="userData.status = 'EXPERT'">
+            <h3>Expert</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-group" *ngIf="userData.status === 'EXPERT'">
+        <label for="masterType">Specialization</label>
+        <select id="masterType" name="masterType" [(ngModel)]="userData.masterType">
+          <option value="" disabled selected>Select specialization</option>
+          <option *ngFor="let type of masterTypes" [value]="type.value">{{type.label}}</option>
+        </select>
+      </div>
+
+      <div class="input-group" *ngIf="userData.status === 'EXPERT'">
+        <label for="experience">Experience (years)</label>
+        <input 
+          type="number" 
+          id="experience"
+          name="experience" 
+          [(ngModel)]="userData.experience">
+      </div>
+
+      <div class="input-group">
+        <label>Social Links</label>
+        <input 
+          type="url" 
+          name="telegramUrl" 
+          [(ngModel)]="userData.telegramUrl" 
+          placeholder="Telegram URL">
+        <input 
+          type="url" 
+          name="instagramUrl" 
+          [(ngModel)]="userData.instagramUrl" 
+          placeholder="Instagram URL">
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="cancel-button" (click)="cancel()">Cancel</button>
+        <button type="submit" class="submit-button" [disabled]="editForm.invalid || isSubmitting">
+          Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

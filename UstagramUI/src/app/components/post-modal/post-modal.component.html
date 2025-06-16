@@ -1,0 +1,75 @@
+<div class="modal-backdrop" *ngIf="post" (click)="closeModal()">
+  <div class="modal-content" [class.mobile]="isMobile" (click)="$event.stopPropagation()">
+    <button class="close-modal" (click)="closeModal()">×</button>
+
+    <div class="post-modal-container" [class.mobile]="isMobile">
+      <div class="post-image-section">
+        <img [src]="post.photoUrl || 'assets/default-post.jpg'" alt="Post image" class="post-image">
+      </div>
+
+      <div class="post-details-section" *ngIf="!isMobile">
+        <div class="post-header">
+          <img [src]="user?.photoPath || 'assets/default-profile.png'" class="user-pic">
+          <span class="username">{{ user?.username || 'unknown' }}</span>
+        </div>
+
+        <div class="post-caption">
+          <p><strong>{{ user?.fullName }}</strong> {{ post.description }}</p>
+          <p class="post-date">{{ post.date | date:'MMM d, yyyy' }}</p>
+        </div>
+
+        <div class="post-comments">
+          <div class="comment" *ngFor="let comment of post.comments || []">
+            <img [src]="comment.user?.photoPath || 'assets/default-profile.png'" class="comment-user-pic">
+            <div class="comment-content">
+              <strong>{{ comment.user?.username || 'unknown' }}</strong> {{ comment.content }}
+            </div>
+          </div>
+        </div>
+
+        <div class="post-actions">
+          <button (click)="likePost()">
+            <i class="far fa-heart"></i> {{ post.likes || 0 }}
+          </button>
+          <button (click)="focusCommentInput()">
+            <i class="far fa-comment"></i>
+          </button>
+        </div>
+
+        <div class="add-comment">
+          <input #commentInput placeholder="Add a comment..." (keyup.enter)="addComment(commentInput.value)">
+          <button (click)="addComment(commentInput.value)">Post</button>
+        </div>
+      </div>
+
+      <div class="mobile-comments-toggle" *ngIf="isMobile">
+        <button (click)="toggleCommentsModal()">View Comments ({{ post.comments?.length || 0 }})</button>
+      </div>
+    </div>
+
+    <div class="comments-modal" *ngIf="isMobile && showCommentsModal" @slideUp>
+      <div class="comments-modal-header">
+        <h3>Comments</h3>
+        <button (click)="toggleCommentsModal()">×</button>
+      </div>
+      <div class="comments-modal-content">
+        <div class="post-caption">
+          <p><strong>{{ user?.fullName }}</strong> {{ post.description }}</p>
+          <p class="post-date">{{ post.date | date:'MMM d, yyyy' }}</p>
+        </div>
+        <div class="post-comments">
+          <div class="comment" *ngFor="let comment of post.comments || []">
+            <img [src]="comment.user?.photoPath || 'assets/default-profile.png'" class="comment-user-pic">
+            <div class="comment-content">
+              <strong>{{ comment.user?.username || 'unknown' }}</strong> {{ comment.content }}
+            </div>
+          </div>
+        </div>
+        <div class="add-comment">
+          <input #commentInput placeholder="Add a comment..." (keyup.enter)="addComment(commentInput.value)">
+          <button (click)="addComment(commentInput.value)">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

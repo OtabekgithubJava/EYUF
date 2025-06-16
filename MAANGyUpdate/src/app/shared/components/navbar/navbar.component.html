@@ -1,0 +1,29 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <a routerLink="/">MAANGy</a>
+    </div>
+    
+    <div class="navbar-links" [class.active]="isMenuOpen">
+      <a routerLink="/" routerLinkActive="active">Home</a>
+      <a routerLink="/news" routerLinkActive="active">News</a>
+      <div class="dropdown">
+        <button class="dropbtn">Companies 
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a *ngFor="let company of companies" [routerLink]="['/company', company]">{{ company }}</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="navbar-search">
+      <input type="text" placeholder="Search posts...">
+      <button><i class="fas fa-search"></i></button>
+    </div>
+    
+    <div class="navbar-mobile-toggle" (click)="toggleMenu()">
+      <i class="fas" [class.fa-bars]="!isMenuOpen" [class.fa-times]="isMenuOpen"></i>
+    </div>
+  </div>
+</nav>

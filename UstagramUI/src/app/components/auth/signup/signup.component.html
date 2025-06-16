@@ -1,0 +1,238 @@
+<div class="auth-container rural-theme">
+  <div class="card">
+    <div class="signup-progress">
+      <div class="steps">
+        <div [class.active]="currentStep === 1" [class.completed]="currentStep > 1">
+          <span>1</span>
+          <p>Asosiy</p>
+        </div>
+        <div [class.active]="currentStep === 2" [class.completed]="currentStep > 2">
+          <span>2</span>
+          <p>Profil</p>
+        </div>
+        <div [class.active]="currentStep === 3" [class.completed]="currentStep > 3">
+          <span>3</span>
+          <p>Mutaxassislik</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 1: Basic Information -->
+    <form *ngIf="currentStep === 1" (ngSubmit)="nextStep()" #step1Form="ngForm">
+      <h2>Asosiy ma'lumotlar</h2>
+      
+      <div class="input-group">
+        <label for="fullName">
+          <i class="icon-user"></i> To'liq ismingiz
+        </label>
+        <input 
+          type="text" 
+          id="fullName"
+          name="fullName" 
+          [(ngModel)]="userData.fullName" 
+          placeholder="Misol: Toshmatov Eshmat" 
+          required>
+      </div>
+
+      <div class="input-group">
+        <label for="username">
+          <i class="icon-at"></i> Foydalanuvchi nomi
+        </label>
+        <input 
+          type="text" 
+          id="username"
+          name="username" 
+          [(ngModel)]="userData.username" 
+          placeholder="Misol: eshmat123" 
+          required>
+        <small>Bu sizning profil manzilingiz bo'ladi</small>
+      </div>
+
+      <div class="input-group">
+        <label for="password">
+          <i class="icon-lock"></i> Parol yarating
+        </label>
+        <input 
+          type="password" 
+          id="password"
+          name="password" 
+          [(ngModel)]="userData.password" 
+          placeholder="Kamida 8 ta belgi" 
+          required>
+        <div class="password-strength">
+          <span [class.active]="passwordStrength > 0"></span>
+          <span [class.active]="passwordStrength > 1"></span>
+          <span [class.active]="passwordStrength > 2"></span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="phone">
+          <i class="icon-phone"></i> Telefon raqam
+        </label>
+        <input 
+          type="tel" 
+          id="phone"
+          name="phone" 
+          [(ngModel)]="userData.phone" 
+          placeholder="+998 XX XXX XX XX" 
+          required>
+        <small>Profilni tasdiqlash uchun ishlatiladi</small>
+      </div>
+
+      <button type="submit" [disabled]="step1Form.invalid" class="primary-btn">
+        Keyingi qadam <i class="icon-arrow-right"></i>
+      </button>
+    </form>
+
+    <!-- Step 2: Profile Details -->
+    <form *ngIf="currentStep === 2" (ngSubmit)="nextStep()" #step2Form="ngForm">
+      <h2>Profil ma'lumotlari</h2>
+      
+      <div class="input-group photo-upload">
+        <label>
+          <i class="icon-camera"></i> Profil rasmi
+        </label>
+        <div class="photo-preview" (click)="triggerFileInput()">
+          <img [src]="userData.photoPath || 'assets/default-profile.png'" alt="Profil rasmi">
+          <input type="file" id="photoUpload" (change)="handlePhotoUpload($event)" accept="image/*" hidden>
+          <div class="upload-hint">Rasm yuklash</div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="location">
+          <i class="icon-map-marker"></i> Manzilingiz
+        </label>
+        <select id="location" name="location" [(ngModel)]="userData.location" required>
+          <option value="" disabled selected>Viloyatingizni tanlang</option>
+          <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="dob">
+          <i class="icon-calendar"></i> Tug'ilgan sana
+        </label>
+        <input 
+          type="date" 
+          id="dob"
+          name="dob" 
+          [(ngModel)]="userData.dob" 
+          required>
+      </div>
+
+      <div class="input-group">
+        <label for="bio">
+          <i class="icon-info-circle"></i> O'zingiz haqingizda
+        </label>
+        <textarea 
+          id="bio"
+          name="bio" 
+          [(ngModel)]="userData.bio" 
+          placeholder="Qisqacha o'zingiz haqingizda yozing..."
+          rows="3"></textarea>
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="secondary-btn" (click)="prevStep()">
+          <i class="icon-arrow-left"></i> Orqaga
+        </button>
+        <button type="submit" [disabled]="step2Form.invalid" class="primary-btn">
+          Keyingi qadam <i class="icon-arrow-right"></i>
+        </button>
+      </div>
+    </form>
+
+    <form *ngIf="currentStep === 3" (ngSubmit)="onSubmit()" #step3Form="ngForm">
+      <h2>Mutaxassislik ma'lumotlari</h2>
+      
+      <div class="input-group">
+        <label>
+          <i class="icon-badge"></i> Siz kim sifatida ro'yxatdan o'tmoqchisiz?
+        </label>
+        <div class="role-selection">
+          <div class="role-option" 
+               [class.selected]="userData.status === 'FARMER'"
+               (click)="userData.status = 'FARMER'">
+            <i class="icon-tractor"></i>
+            <h3>Fermer</h3>
+            <p>O'zim fermerlik bilan shug'ullanaman</p>
+          </div>
+          <div class="role-option" 
+               [class.selected]="userData.status === 'EXPERT'"
+               (click)="userData.status = 'EXPERT'">
+            <i class="icon-graduation-cap"></i>
+            <h3>Duradgor</h3>
+            <p>Duradgorlik ishlari bilan shug'ullanaman</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-group" *ngIf="userData.status === 'EXPERT'">
+        <label for="masterType">
+          <i class="icon-star"></i> Mutaxassislik turi
+        </label>
+        <select id="masterType" name="masterType" [(ngModel)]="userData.masterType">
+          <option value="" disabled selected>Mutaxassisligingizni tanlang</option>
+          <option value="AGROLOGIST">Duradgor</option>
+          <option value="IRRIGATION">Quruvchi</option>
+          <option value="CROP">Ekinlar mutaxassisi</option>
+          <option value="ANIMAL">Chorvachilik mutaxassisi</option>
+        </select>
+      </div>
+
+      <div class="input-group" *ngIf="userData.status === 'EXPERT'">
+        <label for="experience">
+          <i class="icon-award"></i> Tajriba (yil)
+        </label>
+        <input 
+          type="number" 
+          id="experience"
+          name="experience" 
+          [(ngModel)]="userData.experience" 
+          placeholder="5">
+      </div>
+
+      <div class="input-group">
+        <label>
+          <i class="icon-share"></i> Ijtimoiy tarmoqlar (ixtiyoriy)
+        </label>
+        <div class="social-input">
+          <i class="icon-telegram"></i>
+          <input 
+            type="url" 
+            name="telegramUrl" 
+            [(ngModel)]="userData.telegramUrl" 
+            placeholder="Telegram profil havolasi">
+        </div>
+        <div class="social-input">
+          <i class="icon-instagram"></i>
+          <input 
+            type="url" 
+            name="instagramUrl" 
+            [(ngModel)]="userData.instagramUrl" 
+            placeholder="Instagram profil havolasi">
+        </div>
+      </div>
+
+      <div class="terms-agreement">
+        <input type="checkbox" id="terms" name="terms" [(ngModel)]="termsAccepted" required>
+        <label for="terms">Ustagram <a href="/terms">foydalanish shartlari</a> va <a href="/privacy">maxfiylik siyosati</a> bilan tanishdim va roziman</label>
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="secondary-btn" (click)="prevStep()">
+          <i class="icon-arrow-left"></i> Orqaga
+        </button>
+        <button type="submit" [disabled]="step3Form.invalid || !termsAccepted" class="primary-btn">
+          <i class="icon-check"></i> Ro'yxatdan o'tish
+        </button>
+      </div>
+    </form>
+
+    <p class="login-link" *ngIf="currentStep === 1">
+      Hisobingiz bormi? <a routerLink="/login">Kirish</a>
+    </p>
+  </div>
+</div>

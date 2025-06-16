@@ -1,0 +1,53 @@
+<div class="explore-container">
+  <div class="search-container">
+    <button class="back-button" routerLink="/feed" aria-label="Back to feed">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input 
+        type="text" 
+        placeholder="Search users..."
+        #searchInput
+        (input)="search(searchInput.value)">
+    </div>
+  </div>
+
+  <div class="search-results">
+    <div *ngIf="isLoading" class="loading-spinner">
+      <i class="fas fa-spinner fa-spin"></i>
+    </div>
+
+    <div *ngIf="!isLoading && searchResults.length === 0 && searchInput.value" class="no-results">
+      <i class="fas fa-user-slash"></i>
+      <p>No users found</p>
+    </div>
+
+    <div *ngFor="let user of searchResults" class="user-result" (click)="navigateToProfile(user.username)">
+      <img [src]="user.photoPath || 'assets/default-profile.png'" class="user-avatar">
+      <div class="user-info">
+        <span class="username">{{ user.username }}</span>
+        <span class="full-name">{{ user.fullName }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<nav class="mobile-nav" *ngIf="isMobileView">
+    <a routerLink="/feed" class="nav-icon" title="Home">
+          <i class="fas fa-home"></i>
+        </a>
+        <a routerLink="/explore" class="nav-icon" title="Explore">
+          <i class="fas fa-search"></i>
+        </a>
+        <a routerLink="/create-post" class="nav-icon" title="Create">
+          <i class="fas fa-plus-square"></i>
+        </a>
+        <a routerLink="/messages" class="nav-icon" title="Messages">
+          <i class="fas fa-comment-dots"></i>
+        </a>
+        <a routerLink="/profile" class="nav-icon" title="Profile">
+          <i class="fas fa-user-circle"></i>
+        </a>
+</nav>

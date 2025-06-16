@@ -1,0 +1,20 @@
+<div class="company-container">
+  <h1 class="page-title">{{ companyName | titlecase }} News</h1>
+  <p class="page-subtitle">Latest news and updates from {{ companyName | titlecase }}</p>
+
+  <div class="company-grid" *ngIf="!isLoading && companyPosts.length > 0">
+    <app-post-card *ngFor="let post of companyPosts" [post]="post"></app-post-card>
+  </div>
+
+  <div class="no-posts" *ngIf="!isLoading && companyPosts.length === 0">
+    <p>No news posts available for {{ companyName | titlecase }} at the moment.</p>
+  </div>
+
+  <div class="loading-spinner" *ngIf="isLoading">
+    <div class="spinner"></div>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </div>
+</div>

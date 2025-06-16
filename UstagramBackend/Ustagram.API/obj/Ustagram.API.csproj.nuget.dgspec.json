@@ -1,0 +1,299 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.API/Ustagram.API.csproj": {}
+  },
+  "projects": {
+    "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.API/Ustagram.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.API/Ustagram.API.csproj",
+        "projectName": "Ustagram.API",
+        "projectPath": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.API/Ustagram.API.csproj",
+        "packagesPath": "/Users/otabek_coding/.nuget/packages/",
+        "outputPath": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.API/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/otabek_coding/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Application/Ustagram.Application.csproj": {
+                "projectPath": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Application/Ustagram.Application.csproj"
+              },
+              "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Infrastructure/Ustagram.Infrastructure.csproj": {
+                "projectPath": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Infrastructure/Ustagram.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Application/Ustagram.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Application/Ustagram.Application.csproj",
+        "projectName": "Ustagram.Application",
+        "projectPath": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Application/Ustagram.Application.csproj",
+        "packagesPath": "/Users/otabek_coding/.nuget/packages/",
+        "outputPath": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/otabek_coding/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/Ustagram.Domain.csproj": {
+                "projectPath": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/Ustagram.Domain.csproj"
+              },
+              "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Infrastructure/Ustagram.Infrastructure.csproj": {
+                "projectPath": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Infrastructure/Ustagram.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/Ustagram.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/Ustagram.Domain.csproj",
+        "projectName": "Ustagram.Domain",
+        "projectPath": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/Ustagram.Domain.csproj",
+        "packagesPath": "/Users/otabek_coding/.nuget/packages/",
+        "outputPath": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/otabek_coding/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Infrastructure/Ustagram.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Infrastructure/Ustagram.Infrastructure.csproj",
+        "projectName": "Ustagram.Infrastructure",
+        "projectPath": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Infrastructure/Ustagram.Infrastructure.csproj",
+        "packagesPath": "/Users/otabek_coding/.nuget/packages/",
+        "outputPath": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/otabek_coding/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/Ustagram.Domain.csproj": {
+                "projectPath": "/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/Ustagram.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

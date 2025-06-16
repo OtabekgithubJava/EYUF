@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "2pz4E4MD3+uOQchZrwXuGd8pUeoN3NrPKPqJNRjaq1uXrwjWXYbuRbAJ5buNrf/fiH1G8xOiYN3TP9QJ6nxFtA==",
+  "success": true,
+  "projectFilePath": "/Users/otabek_coding/Desktop/EYUF/HashPassword/HashPassword/HashPassword.csproj",
+  "expectedPackageFiles": [
+    "/Users/otabek_coding/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

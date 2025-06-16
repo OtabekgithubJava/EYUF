@@ -1,0 +1,200 @@
+$primary-color: #3f51b5;
+$secondary-color: #ff4081;
+$navbar-bg: #1a237e;
+$card-bg: #ffffff;
+$text-primary: #212121;
+$text-secondary: #757575;
+$hover-bg: #f5f5f5;
+$tag-bg: #e8eaf6;
+
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+$container-width: 1200px;
+
+.navbar {
+  background: $navbar-bg;
+  color: white;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: $shadow-md;
+
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 2rem;
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+        position: relative;
+
+        &:hover {
+          color: $primary-color;
+        }
+
+        &.active {
+          color: $primary-color;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: $primary-color;
+          }
+        }
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+
+        .dropbtn {
+          background: transparent;
+          border: none;
+          color: white;
+          font-weight: 500;
+          font-size: 1rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background: white;
+          min-width: 160px;
+          box-shadow: $shadow-md;
+          border-radius: 4px;
+          z-index: 1;
+          top: 100%;
+          left: 0;
+
+          a {
+            color: $text-primary;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+
+            &:hover {
+              background: $hover-bg;
+              color: $primary-color;
+            }
+          }
+        }
+
+        &:hover .dropdown-content {
+          display: block;
+        }
+      }
+    }
+
+    .navbar-search {
+      display: flex;
+      align-items: center;
+
+      input {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+      }
+
+      button {
+        background: $primary-color;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+      }
+    }
+
+    .navbar-mobile-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    .navbar-container {
+      padding: 0 1rem;
+
+      .navbar-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: $navbar-bg;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        gap: 1rem;
+        transform: translateY(-150%);
+        transition: transform 0.3s ease-in-out;
+        box-shadow: $shadow-md;
+
+        &.active {
+          transform: translateY(0);
+        }
+
+        .dropdown {
+          .dropdown-content {
+            position: static;
+            display: none;
+            width: 100%;
+            box-shadow: none;
+            border-radius: 0;
+          }
+
+          &:hover .dropdown-content {
+            display: none;
+          }
+
+          &.active .dropdown-content {
+            display: block;
+          }
+        }
+      }
+
+      .navbar-search {
+        display: none;
+      }
+
+      .navbar-mobile-toggle {
+        display: block;
+      }
+    }
+  }
+}

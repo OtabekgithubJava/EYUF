@@ -1,0 +1,12 @@
+/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/bin/Debug/net8.0/Ustagram.Domain.deps.json
+/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/bin/Debug/net8.0/Ustagram.Domain.dll
+/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/bin/Debug/net8.0/Ustagram.Domain.pdb
+/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/obj/Debug/net8.0/Ustagram.Domain.csproj.AssemblyReference.cache
+/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/obj/Debug/net8.0/Ustagram.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/obj/Debug/net8.0/Ustagram.Domain.AssemblyInfoInputs.cache
+/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/obj/Debug/net8.0/Ustagram.Domain.AssemblyInfo.cs
+/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/obj/Debug/net8.0/Ustagram.Domain.csproj.CoreCompileInputs.cache
+/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/obj/Debug/net8.0/Ustagram.Domain.dll
+/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/obj/Debug/net8.0/refint/Ustagram.Domain.dll
+/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/obj/Debug/net8.0/Ustagram.Domain.pdb
+/Users/otabek_coding/Desktop/EYUF/UstagramBackend/Ustagram.Domain/obj/Debug/net8.0/ref/Ustagram.Domain.dll

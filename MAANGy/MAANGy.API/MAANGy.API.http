@@ -1,0 +1,6 @@
+@MAANGy.API_HostAddress = http://localhost:5171
+
+GET {{MAANGy.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

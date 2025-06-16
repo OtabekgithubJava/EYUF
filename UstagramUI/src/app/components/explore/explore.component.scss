@@ -1,0 +1,159 @@
+$primary-color: #4361ee;
+$primary-hover: #3a56d4;
+$text-color: #2b2d42;
+$text-light: #8d99ae;
+$border-color: #e9ecef;
+$error-color: #ef233c;
+$success-color: #4cc9f0;
+$background-light: #f8f9fa;
+$white: #ffffff;
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$transition: all 0.3s ease;
+
+.explore-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: $text-color;
+    font-size: 1.75rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: $transition;
+    margin-bottom: 5%;
+
+    &:hover {
+      background-color: rgba($primary-color, 0.1);
+      color: $primary-color;
+    }
+  }
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  
+  i {
+    position: absolute;
+    left: 15px;
+    color: #8e8e8e;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border-radius: 8px;
+    border: 1px solid #dbdbdb;
+    font-size: 14px;
+    background-color: #fafafa;
+    
+    &:focus {
+      outline: none;
+      background-color: white;
+    }
+  }
+}
+
+.search-results {
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid #dbdbdb;
+}
+
+.user-result {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #efefef;
+  
+  &:hover {
+    background-color: #fafafa;
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.user-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  
+  .username {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  
+  .full-name {
+    color: #8e8e8e;
+    font-size: 14px;
+  }
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 20px;
+  
+  i {
+    font-size: 24px;
+    color: #0095f6;
+  }
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px 20px;
+  
+  i {
+    font-size: 40px;
+    color: #8e8e8e;
+    margin-bottom: 15px;
+  }
+  
+  p {
+    color: #8e8e8e;
+    font-size: 16px;
+  }
+}
+
+
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  border-top: 1px solid #dbdbdb;
+  z-index: 100;
+}
+
+.mobile-nav .nav-icon {
+  font-size: 24px;
+  color: #262626;
+  text-decoration: none;
+}

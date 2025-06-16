@@ -1,0 +1,174 @@
+$primary-color: #4361ee;
+$primary-hover: #3a56d4;
+$text-color: #2b2d42;
+$text-light: #8d99ae;
+$border-color: #e9ecef;
+$error-color: #ef233c;
+$success-color: #4cc9f0;
+$background-light: #f8f9fa;
+$white: #ffffff;
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$transition: all 0.3s ease;
+
+
+.back-button {
+    background: none;
+    border: none;
+    color: $text-color;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 50%;
+    transition: $transition;
+
+    &:hover {
+      background-color: rgba($primary-color, 0.1);
+      color: $primary-color;
+    }
+  }
+
+
+
+.edit-profile-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+.notification {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  z-index: 1000;
+  min-width: 200px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+
+  &.success {
+    background-color: #4caf50;
+  }
+
+  &.error {
+    background-color: #f44336;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .photo-preview {
+    position: relative;
+    cursor: pointer;
+
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .upload-hint {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 5px;
+      font-size: 12px;
+    }
+  }
+
+  .role-selection {
+    display: flex;
+    gap: 10px;
+
+    .role-option {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #dbdbdb;
+      border-radius: 4px;
+      text-align: center;
+      cursor: pointer;
+
+      &.selected {
+        border-color: #0095f6;
+        background: #e6f3ff;
+      }
+    }
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+
+  .cancel-button {
+    background: #dbdbdb;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .submit-button {
+    background: #0095f6;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:disabled {
+      background: #b2dffc;
+      cursor: not-allowed;
+    }
+  }
+}

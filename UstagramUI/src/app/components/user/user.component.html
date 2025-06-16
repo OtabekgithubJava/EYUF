@@ -1,0 +1,88 @@
+<div class="profile-container" *ngIf="!isLoading && user && !errorMessage">
+  <div class="profile-header">
+    <button class="back-button" routerLink="/feed"><i class="fas fa-arrow-left"></i></button>
+    <h2 class="username">{{ user.username }}</h2>
+    <div class="header-actions" *ngIf="isCurrentUser">
+      <button class="edit-button" (click)="navigateToEdit()"><i class="fas fa-pencil-alt"></i></button>
+    </div>
+  </div>
+
+  <div class="profile-content">
+    <div class="profile-info-section">
+      <div class="profile-pic-container">
+        <img [src]="user.photoPath || 'assets/default-profile.jpg'" class="profile-pic">
+        <div class="profile-badge" *ngIf="user.masterType">{{ user.masterType }}</div>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><strong>{{ posts.length }}</strong><span>Posts</span></div>
+        <div class="stat"><strong>{{ user.experience || 0 }}</strong><span>Years Exp.</span></div>
+        <div class="stat"><strong>0</strong><span>Followers</span></div>
+      </div>
+      <div class="profile-actions">
+        <button class="action-button primary" (click)="contactUser()"><i class="fas fa-envelope"></i> Contact</button>
+        <button class="action-button secondary" (click)="shareProfile()"><i class="fas fa-share-alt"></i> Share</button>
+      </div>
+    </div>
+
+    <div class="profile-details-section">
+      <div class="profile-bio">
+        <h1>{{ user.fullName }}</h1>
+        <p class="status-badge" *ngIf="user.status">{{ user.status }}</p>
+        <p class="bio-text">{{ user.bio || 'No bio yet' }}</p>
+        <div class="detail-row" *ngIf="user.location">
+          <i class="fas fa-map-marker-alt"></i><span>{{ user.location }}</span>
+        </div>
+        <div class="detail-row" *ngIf="user.dob">
+          <i class="fas fa-birthday-cake"></i><span>{{ calculateAge(user.dob) }} years old</span>
+        </div>
+        <div class="social-links" *ngIf="user.telegramUrl || user.instagramUrl">
+          <a *ngIf="user.telegramUrl" [href]="user.telegramUrl" target="_blank"><i class="fab fa-telegram"></i></a>
+          <a *ngIf="user.instagramUrl" [href]="user.instagramUrl" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="skills-section" *ngIf="user.masterType">
+        <h3>Expertise</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">{{ user.masterType }}</span>
+          <span class="skill-tag">{{ user.experience }} years experience</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="posts-section">
+    <div class="section-header">
+      <h3>Recent Work</h3>
+      <div class="view-options">
+        <button class="view-option active"><i class="fas fa-th"></i></button>
+        <button class="view-option"><i class="fas fa-th-list"></i></button>
+      </div>
+    </div>
+    <div class="posts-grid">
+      <div *ngFor="let post of posts" class="post-thumbnail" (click)="openPostModal(post)">
+        <img [src]="post.photoUrl || 'assets/default-post.jpg'" alt="Post">
+        <div class="post-overlay">
+          <span><i class="fas fa-heart"></i> {{ post.likes || 0 }}</span>
+          <span><i class="fas fa-comment"></i> {{ post.comments?.length || 0 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="delete-section" *ngIf="showDeleteSection && isCurrentUser">
+    <h3>Danger Zone</h3>
+    <p>Deleting your account is permanent and cannot be undone.</p>
+    <button class="delete-button" (click)="navigateToDelete()">Delete My Account</button>
+  </div>
+  <button class="show-delete-button" *ngIf="isCurrentUser" (click)="toggleDeleteSection()"><i class="fas fa-cog"></i> Advanced Settings</button>
+</div>
+
+<div *ngIf="isLoading" class="loading-spinner"><i class="fas fa-spinner fa-spin"></i></div>
+<div *ngIf="errorMessage" class="error-message">{{ errorMessage }} <button (click)="loadUserData()">Retry</button></div>
+
+<app-post-modal
+  *ngIf="selectedpost"
+  [post]="selectedpost"
+  [user]="user"
+  (close)="closeModal()">
+</app-post-modal>

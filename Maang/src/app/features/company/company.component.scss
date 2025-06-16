@@ -1,0 +1,84 @@
+$primary-color: #3f51b5;
+$secondary-color: #ff4081;
+$navbar-bg: #1a237e;
+$card-bg: #ffffff;
+$text-primary: #212121;
+$text-secondary: #757575;
+$hover-bg: #f5f5f5;
+$tag-bg: #e8eaf6;
+
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+$container-width: 1200px;
+
+.company-container {
+  max-width: $container-width;
+  margin: 2rem auto;
+  padding: 0 2rem;
+
+  .page-title {
+    font-size: 2.2rem;
+    color: $text-primary;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    color: $text-secondary;
+    margin-bottom: 2rem;
+  }
+
+  .company-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .no-posts {
+    text-align: center;
+    padding: 2rem;
+    color: $text-secondary;
+  }
+
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba($primary-color, 0.3);
+      border-radius: 50%;
+      border-top-color: $primary-color;
+      animation: spin 1s ease-in-out infinite;
+    }
+  }
+
+  .error-message {
+    text-align: center;
+    padding: 2rem;
+    color: #ff0000;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .company-container {
+    padding: 0 1rem;
+
+    .page-title {
+      font-size: 1.8rem;
+    }
+
+    .company-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

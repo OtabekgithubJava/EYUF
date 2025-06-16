@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "bg/hRcJN4F1ijPH/HEyOheGhvmu4HcZwqM1BRNzOLCk=",
+  "Source": "IdentityUser.API",
+  "BasePath": "_content/IdentityUser.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
